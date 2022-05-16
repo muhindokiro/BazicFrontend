@@ -1,0 +1,77 @@
+<br>
+<div *ngFor="let drink of cocktailList" class="container">
+  <div class="row">
+    <div class="column">
+      <div class="card mb-3" style="max-width: 640px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ drink.strDrinkThumb }}" class="card-img" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Cocktail: {{ drink.strDrink }}</h5>
+              <hr />
+              <p class="card-text">
+                Ingredients: {{ drink.strIngredient1 }},{{
+                  drink.strIngredient2
+                }},{{ drink.strIngredient3 }},{{ drink.strIngredient4 }},{{
+                  drink.strIngredient5
+                }},{{ drink.strIngredient6 }},{{ drink.strIngredient7 }}
+              </p>
+              <hr />
+              <p class="card-text">Description: {{ drink.strInstructions }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a Cocktail</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+     <form [formGroup]="cockTailForm">
+        <div>
+      <mat-form-field class="width-49" appearance="outline">
+          <input type="text" matInput placeholder="NAME" formControlName="name" required>
+      </mat-form-field>
+
+      <mat-form-field class="width-49" appearance="outline">
+        <input type="text" matInput placeholder="DESCRIPTION" formControlName="description" required>
+      </mat-form-field>
+
+
+      <mat-form-field class="width-49" appearance="outline">
+        <input type="text" matInput placeholder="INGREDIENTS" formControlName="ingredients" required>
+      </mat-form-field>
+
+      </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancle
+        </button>
+        <button type="button" class="btn btn-primary" (click)="addCockTail()">Add</button>
+      </div>
+    </div>
+  </div>
+
